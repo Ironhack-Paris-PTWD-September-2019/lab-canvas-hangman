@@ -6,7 +6,7 @@ $start.onclick = function () {
   console.log('starting');
   
   hangman = new Hangman();
-  hangmanCanvas = new HangmanCanvas(hangman.secretWord)
+  hangmanCanvas = new HangmanCanvas(hangman.getWord())
 };
 
 document.onkeydown = (e) => {

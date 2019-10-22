@@ -7,6 +7,8 @@ $start.onclick = function () {
   
   hangman = new Hangman();
   hangmanCanvas = new HangmanCanvas(hangman.secretWord)
+
+  hangmanCanvas.drawLines();
 };
 
 document.onkeydown = (e) => {

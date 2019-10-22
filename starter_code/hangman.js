@@ -1,44 +1,52 @@
-let hangman;
+function code2letter(code) {
+  //
+  // function that convert a keycode into a letter (see: https://keycode.info)
+  //
+  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[code - 65]; 
+}
 
-// class Hangman {
-//   constructor() {
+class Hangman {
+  constructor() {
+      this.words = ["choucroute", "saucisse", "chocolat", "patate", "alsace"];
+      this.secretWord = this.getWord();
+      this.letters = [];
+      this.guessedLetter = "";
+      this.errorsLeft =10;
+  }
 
-//   }
+  getWord() {
+  return this.words[Math.floor(Math.random()*this.words.length)]
+  }
 
-//   getWord() {
+  checkIfLetter(keyCode) {
+    if(keyCode >= 65 && keyCode <= 90){return true}
+    else return false;
+  }
 
-//   }
+  checkClickedLetters(key) {
+    if (this.letters.indexOf(key) !== -1){return false}
+    else return true;
+  }
 
-//   checkIfLetter(keyCode) {
+  addCorrectLetter(i) {
+    const correctLetter = this.secretWord[i];
+    this.guessedLetter += correctLetter.toUpperCase();
+    this.checkWinner();
+  }
 
-//   }
+  addWrongLetter(letter) {
+    this.errorsLeft = this.errorsLeft - 1 ;
+    this.checkGameOver();
+   }
+   checkGameOver() {
+     if (this.errorsLeft===0){
+       return true
+     } else return false
 
-//   checkClickedLetters(key) {
+  }
 
-//   }
-
-//   addCorrectLetter(i) {
-
-//   }
-
-//   addWrongLetter(letter) {
-
-//   }
-
-//   checkGameOver() {
-
-//   }
-
-//   checkWinner() {
-
-//   }
-
-// }
-
-document.getElementById('start-game-button').onclick = () => {
-  hangman = new Hangman();
-};
-
-document.onkeydown = (e) => {
-
-};
+  checkWinner() {
+    if (this.secretWord.length === this.guessedLetter.length){ return true}
+    else return false;
+  }
+ }

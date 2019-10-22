@@ -34,11 +34,3 @@ let hangman;
 //   }
 
 // }
-
-document.getElementById('start-game-button').onclick = () => {
-  hangman = new Hangman();
-};
-
-document.onkeydown = (e) => {
-
-};

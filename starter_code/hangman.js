@@ -1,5 +1,3 @@
-let hangman;
-
 // class Hangman {
 //   constructor() {
 

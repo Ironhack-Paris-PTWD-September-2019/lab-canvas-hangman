@@ -48,9 +48,3 @@ class Hangman {
 		return this.errorsLeft > 0 && allLettersGuessed ? true : false;
 	}
 }
-
-document.getElementById("start-game-button").onclick = () => {
-	hangman = new Hangman();
-};
-
-document.onkeydown = e => {};

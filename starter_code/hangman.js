@@ -1,6 +1,6 @@
 
 
-const words= ['MARIJUANA', 'IRONHACK', "MAGNIFIQUE", 'JALOUX', 'MAINSTREAM', 'GUITARE','HOOLIGAN'];
+const words= ['MARIJUANA', "MAGNIFIQUE", 'MAINSTREAM', 'HOOLIGAN'];
 const alphabet = {
   65: 'A',
   66: 'B',

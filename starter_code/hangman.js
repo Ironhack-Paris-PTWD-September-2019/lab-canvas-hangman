@@ -1,8 +1,6 @@
-let hangman;
-
 class Hangman {
 	constructor() {
-		this.words = ["MICHEL", "Ironhack", "IRONHACK"];
+		this.words = ["Ironhack", "Ironhack", "Ironhack"];
 		this.secretWord = this.getWord();
 		this.letters = [];
 		this.guessedLetter = "";

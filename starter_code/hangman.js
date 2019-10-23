@@ -28,7 +28,9 @@ class Hangman {
 
 	addWrongLetter(letter) {
 		this.letters.push(letter.toUpperCase());
-		this.errorsLeft--;
+		if (this.errorsLeft > 0) {
+			this.errorsLeft--;
+		}
 	}
 
 	checkGameOver() {

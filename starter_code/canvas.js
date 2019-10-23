@@ -9,22 +9,22 @@ class HangmanCanvas {
 			size: 80,
 			space: 20,
 			xOffset: 350,
-			yOffset: 400
+			yOffset: 280
 		};
 		this.correctStyle = {
 			charWidth: 80,
 			space: 20,
 			xOffset: 350,
-			yOffset: 390
+			yOffset: 270
 		};
 		this.incorrectStyle = {
 			charWidth: 40,
 			space: 10,
-			xOffset: 600,
-			yOffset: 150
+			xOffset: 500,
+			yOffset: 50
 		};
 		this.imagePosition = {
-			x: 400,
+			x: 500,
 			y: 0
 		};
 	}
@@ -109,25 +109,25 @@ class HangmanCanvas {
 				);
 				break;
 			case 7:
-				easyLine(this.ctx, 100, this.lineStyle.yOffset - 50, 100, 50);
+				easyLine(this.ctx, 100, this.lineStyle.yOffset - 50, 100, 5);
 				break;
 			case 6:
-				easyLine(this.ctx, 100, 50, 300, 50);
+				easyLine(this.ctx, 100, 5, 300, 5);
 				break;
 			case 5:
-				easyLine(this.ctx, 300, 50, 300, 100);
+				easyLine(this.ctx, 300, 5, 300, 50);
 				break;
 			case 4:
-				easyArc(this.ctx, 300, 130, 30);
+				easyArc(this.ctx, 300, 70, 20);
 				break;
 			case 3:
-				easyLine(this.ctx, 300, 160, 300, 270);
+				easyLine(this.ctx, 300, 90, 300, 170);
 				break;
 			case 2:
-				easyLine(this.ctx, 300, 270, 260, 320);
+				easyLine(this.ctx, 300, 170, 270, 200);
 				break;
 			case 1:
-				easyLine(this.ctx, 300, 270, 340, 320);
+				easyLine(this.ctx, 300, 170, 330, 200);
 				break;
 			default:
 				break;
@@ -151,8 +151,8 @@ class HangmanCanvas {
 			winnerImage,
 			this.imagePosition.x,
 			this.imagePosition.y,
-			winnerImage.width * 0.6,
-			winnerImage.height * 0.6
+			winnerImage.width * 0.5,
+			winnerImage.height * 0.5
 		);
 	}
 }

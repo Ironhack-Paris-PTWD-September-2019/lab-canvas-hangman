@@ -13,6 +13,10 @@ $start.onclick = function() {
 	hangmanCanvas = new HangmanCanvas(hangman.secretWord);
 	hangmanCanvas.createBoard();
 	hangmanCanvas.drawLines();
+	// TEST HANGMAN
+	// for (let j = 10; j > 0; j--) {
+	// 	hangmanCanvas.drawHangman(j);
+	// }
 };
 
 // GAME

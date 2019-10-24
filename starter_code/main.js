@@ -1,19 +1,20 @@
 var hangman;
 var hangmanCanvas;
 
-var $start = document.getElementById('start-game-button');
-$start.onclick = function () {
-  console.log('starting');
-  
+var $start = document.getElementById("start-game-button");
+$start.onclick = function() {
+  console.log("starting");
   hangman = new Hangman();
-  hangmanCanvas = new HangmanCanvas(hangman.secretWord)
+  hangmanCanvas = new HangmanCanvas(hangman.secretWord);
 };
 
-document.onkeydown = (e) => {
+document.onkeydown = e => {
   const code = e.which;
-  console.log('code', code);
+  console.log("code", code);
 
-  //
-  // your turn ;)
-  //
+  if (this.secretWord.indexOf(code) === -1) {
+    console.log(code, errorsLeft);
+  } else {
+    console.log(this.secretWord[i]);
+  }
 };

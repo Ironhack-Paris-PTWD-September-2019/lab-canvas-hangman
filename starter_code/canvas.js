@@ -2,23 +2,23 @@ class HangmanCanvas {
   constructor(secretWord) {
     this.ctx = document.getElementById("hangman").getContext("2d");
     this.createBoard();
-    this.drawLines();
+    this.drawLines(secretWord);
   }
 
   createBoard() {
-    //this.ctx.fillStyle = "red";
     this.ctx.clearRect(0, 0, 800, 1200);
   }
 
-  drawLines() {
-    var path = ctx.beginPath();
-
-    for (let i = 0; i < this.secretWord.length; i++) {
-      this.ctx.beginPath(700, 100);
-      this.ctx.lineTo(700, 100);
-      // this.ctx.stroke();
-      // this.ctx.moveTo();
-      //this.ctx.beginPath();
+  drawLines(secretWord) {
+    var x = 100;
+    var a = 0;
+    for (let i = 0; i < secretWord.length; i++) {
+      this.ctx.beginPath();
+      this.ctx.moveTo(x, 50);
+      this.ctx.lineTo((x += 20), 50);
+      this.ctx.stroke();
+      this.ctx.closePath();
+      x += 20;
     }
   }
 

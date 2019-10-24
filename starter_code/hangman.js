@@ -60,7 +60,7 @@ function code2letter(code) {
 
 class Hangman {
   constructor() {
-    this.words = ["IRONHACK", "IRONHACK", "IRONHACK"];
+    this.words = ["HELLO", "IRONHACK", "COMPUTER"];
     this.secretWord = this.getWord();
     this.letters = [];
     this.guessedLetter = "";

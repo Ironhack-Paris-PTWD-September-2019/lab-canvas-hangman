@@ -1,57 +1,54 @@
-function code2letter(code) {
-  //
-  // function that convert a keycode into a letter (see: https://keycode.info)
-  //
-  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[code - 65]; 
-}
 
 class Hangman {
   constructor() {
     this.words = ['IRONHACK', 'IRONHACK', 'IRONHACK'];
-    this.secretWord = this.getWord();
+    this.secretWord="";
     this.letters = [];
+    this.secretWord = this.getWord();
     this.guessedLetter = "";
     this.errorsLeft = 10;
+    this.hangmanCanvas=new HangmanCanvas (this.secretWord); 
   }
 
   getWord() {
-    return this.words[Math.floor(Math.random()*this.words.length)];
+    var random= Math.floor(Math.random()*this.words.length);
+    return this.words [random];
   }
 
   checkIfLetter(keyCode) {
-    const letter = code2letter(keyCode);
-
-    return letter ? true : false;
+    return keyCode > 64 && keyCode < 91;
   }
 
-  checkClickedLetters(letter) {
-    const notAlreadyTyped = this.letters.indexOf(letter) === -1; // can't find `letter` into `this.letters`
-
-    if (notAlreadyTyped) {
-      this.letters.push(letter);
-      return true;
-    } else {
-      return false;
-    }
+  checkClickedLetters(key) {
+    return this.letters.indexOf(key.toUpperCase()) == -1;
   }
 
-  addCorrectLetter(index) {
-    const correctLetter = this.secretWord[index];
-
-    this.guessedLetter += correctLetter.toUpperCase(); // store the uppercase version
+  addCorrectLetter(i) {
+    this.hangmanCanvas.writeCorrectLetter(i);
+    this.guessedLetter += this.secretWord[i].toUpperCase();
+    if (this.checkWinner()) { console.log('winner'); }
+    if (this.checkWinner()) {
+    this.hangmanCanvas.winner();
+    this.clearGame();
   }
+};
 
   addWrongLetter(letter) {
-    this.errorsLeft -= 1;
-    //this.checkGameOver();
-  }
-
+    this.hangmanCanvas.writeWrongLetter(letter, this.errorsLeft);
+    this.errorsLeft--;
+    if (this.checkGameOver()) { console.log('looser'); }
+    if (this.checkGameOver()) {
+      this.hangmanCanvas.gameOver();
+      this.clearGame();
+    }
+  };
+  
   checkGameOver() {
-    return (this.errorsLeft < 1);
+    return this.errorsLeft === 0;
   }
 
   checkWinner() {
-    return this.guessedLetter.toUpperCase().split('').sort().join('') === this.secretWord.toUpperCase().split('').sort().join('');
+    return this.guessedLetter.length === this.secretWord.length;
   }
+};
 
-}

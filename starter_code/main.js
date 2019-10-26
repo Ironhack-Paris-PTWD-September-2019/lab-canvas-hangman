@@ -13,6 +13,7 @@ $start.onclick = function () {
 document.onkeydown = (e) => {
   const code = e.which;
   let letter;
+  let win; 
   if(hangman.checkIfLetter(code)){
     letter= alphabet[code];
     console.log('Letter typed is ', letter);
@@ -27,14 +28,16 @@ document.onkeydown = (e) => {
       
       if(indexes.length>0) {
         indexes.forEach(index => {
-          hangman.addCorrectLetter(index);
+          win=hangman.addCorrectLetter(index);
           hangmanCanvas.writeCorrectLetter(index);});
         
-        console.log("the letter " + letter + " is in word " + hangman.secretWord);
-        
+        //console.log("the letter " + letter + " is in word " + hangman.secretWord);
+        if(win) {
+          hangmanCanvas.winner();
+          document.onkeydown=null;}
       } else {
         let game=hangman.addWrongLetter(letter);
-        console.log("the letter " + letter + " is not in word " + hangman.secretWord);
+        //console.log("the letter " + letter + " is not in word " + hangman.secretWord);
         if(game) {
           hangmanCanvas.gameOver();
           document.onkeydown=null;

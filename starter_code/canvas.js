@@ -9,6 +9,8 @@ class HangmanCanvas {
     this.startY= 200;
     this.gOverImg = new Image();   // Create new <img> element
     this.gOverImg.src = 'images/gameover.png';
+    this.awesomeImg=new Image(); 
+    this.awesomeImg.src='images/awesome.png';
     this.createBoard();
   }
 
@@ -148,7 +150,8 @@ class HangmanCanvas {
   }
 
   winner() {
-
+    this.createBoard();
+    this.ctx.drawImage(this.awesomeImg,164,80);
   }
 
 }

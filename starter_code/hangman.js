@@ -1,44 +1,55 @@
-let hangman;
+function code2letter(code) {
+  //
+  // function that convert a keycode into a letter (see: https://keycode.info)
+  //
+  return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[code - 65]; 
+}
 
-// class Hangman {
-//   constructor() {
+class Hangman {
+  constructor() {
+    this.words = ['IRONHACK', 'IRONHACK', 'IRONHACK'];
+    this.secretWord = this.getWord();
+    this.letters = [];
+    this.guessedLetter = "";
+    this.errorsLeft = 10;
+  }
 
-//   }
+  getWord() {
+    return this.words[Math.floor(Math.random()*this.words.length)];
+  }
 
-//   getWord() {
+  checkIfLetter(keyCode) {
+    const letter = code2letter(keyCode);
+    return letter ? true : false;
+  }
 
-//   }
+  checkClickedLetters(letter) {
+    const notAlreadyTyped = this.letters.indexOf(letter) === -1; // can't find `letter` into `this.letters`
 
-//   checkIfLetter(keyCode) {
+    if (notAlreadyTyped) {
+      this.letters.push(letter);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-//   }
+  addCorrectLetter(index) {
+    const correctLetter = this.secretWord[index];
+    this.guessedLetter += correctLetter.toUpperCase(); // store the uppercase version
+  }
 
-//   checkClickedLetters(key) {
+  addWrongLetter(letter) {
+    this.errorsLeft -= 1;
+    //this.checkGameOver();
+  }
 
-//   }
+  checkGameOver() {
+    return (this.errorsLeft < 1);
+  }
 
-//   addCorrectLetter(i) {
+  checkWinner() {
+    return this.guessedLetter.toUpperCase().split('').sort().join('') === this.secretWord.toUpperCase().split('').sort().join('');
+  }
 
-//   }
-
-//   addWrongLetter(letter) {
-
-//   }
-
-//   checkGameOver() {
-
-//   }
-
-//   checkWinner() {
-
-//   }
-
-// }
-
-document.getElementById('start-game-button').onclick = () => {
-  hangman = new Hangman();
-};
-
-document.onkeydown = (e) => {
-
-};
+}
